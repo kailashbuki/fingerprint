@@ -1,2 +1,25 @@
-# fingerprint module
-generates fingerprints of a document by implementing rolling hash & winnowing as in stanford's MOSS.
+* what is it?
+= "fingerprint" module generates fingerprints of a document.
+
+* Okay i now know about it a bit, tell me how it calculates fingerprints?
+= Generation of fingerprints of a document is a three stage process;
+[1st phase]: generates the k-grams from the standard string
+[2nd phase]: generates the hash values for each k-gram using rolling hash function 
+[3rd phase]: generates the fingerprints from the hash values using winnowing
+
+* Hmm! ... How can i use it?
+= It's plain simple. Here's an example for you;
+  
+    from fingerprint import file_content_refiner, FingerprintGenerator
+  
+    # You could get the standard string from a document as;
+    s = file_content_refiner("path/to/file")
+    # OR you could directly pass the standard string if you have
+    s = "some sample string"
+    
+    fpg = FingerprintGenerator(input_string=s)
+    fpg.generate_fingerprints()
+    print fpg.fingerprints
+
+* How can i contact the author?
+= Feel free to contact at kailash<DOT>buki<AT>gmail<DOT>com (kailash.buki@gmail.com)
