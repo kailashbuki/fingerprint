@@ -1,0 +1,2 @@
+# fingerprint module
+generates fingerprints of a document by implementing rolling hash & winnowing as in stanford's MOSS.
