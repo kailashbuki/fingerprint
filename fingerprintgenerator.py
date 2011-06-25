@@ -23,9 +23,9 @@
 string. Winnowing-local algorithms for document fingerprinting is implemented
 to calculate the fingerprints. Fingerprint generation is carried out in the
 three phases;
-[1st phase]: generate the kgrams from the standard string
-[2nd phase]: calculate the hash value for each kgram using rolling hash function
-[3rd phase]: produce the fingeprints using winnowing
+[1st phase]: generates the k-grams from the standard string
+[2nd phase]: generates the hash values for each k-gram using rolling hash function
+[3rd phase]: generates the fingerprints from the hash values using winnowing
 
 For more details on winnowing-local algorithms for document fingerprinting,
 make yourself comfortable at
