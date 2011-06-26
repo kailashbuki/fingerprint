@@ -1,6 +1,6 @@
 ===========
 fingerprint
-==========
+===========
 * what is it?
 "fingerprint" module generates fingerprints of a document.
 
