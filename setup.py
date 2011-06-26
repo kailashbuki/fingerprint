@@ -1,3 +1,6 @@
+# set up details
+from distutils.core import setup
+
 setup(
     name='fingerprint',
     version='1.0',
