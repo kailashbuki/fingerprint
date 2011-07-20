@@ -14,20 +14,20 @@ fingerprint
         
         Generation of fingerprints of a document is a three stage process;
     
-        [1st phase]: generates the k-grams from the standard string
-        [2nd phase]: generates the hash values for each k-gram using rolling hash function 
-        [3rd phase]: generates the fingerprints from the hash values using winnowing
+        - (1st phase) generates the k-grams from the standard string 
+        - (2nd phase) generates the hash values for each k-gram using rolling hash function 
+        - (3rd phase) generates the fingerprints from the hash values using winnowing
 
     * **How can i install it on my machine?** 
     
         You can install it in basically two ways;
     
-        ~ using source
+        - using source
             1. git clone git@github.com:kailashbuki/fingerprint.git
             2. cd fingerprint
             3. sudo python setup.py install
         
-        ~ using pip
+        - using pip
             1. sudo pip install fingerprint
     
     * **Hmm! ... How can i use it?**
