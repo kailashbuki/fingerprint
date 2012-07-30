@@ -9,7 +9,7 @@ setup(
     author='Kailash Budhathoki',
     author_email='kailash.buki@gmail.com',
     description='Document fingerprint generator',
-    long_description=open('README.rst').read(),
+    long_description=open('README').read(),
     packages=['fingerprint'],
     zip_safe=False,
     platforms='any',
