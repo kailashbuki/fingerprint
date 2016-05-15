@@ -1,51 +1,18 @@
-===========
-fingerprint
-===========
+# Fingerprint -- Document Fingerprint Generator
 
-    * **What is it?**
-        
-        "fingerprint" module generates fingerprints of a document.
-    
-    * **Fingerprint!!!! :(, What is that?**
-        
-        Fingerprint is like the signature of the document. More specifically, in our context, it is the subset of hash values calculated from the document.
+## Fingerprint of a document
+Fingerprint is a signature of the document. In particular, it is a representative subset of hash values from the set of all hash values of a document. For more detail, please consider taking a look at [Winnowing: Local Algorithms for Document Fingerprinting](http://theory.stanford.edu/~aiken/publications/papers/sigmod03.pdf) *(specifically Figure 2)*.
 
-    * **Okay i now know about it a bit, tell me how it calculates fingerprints?**
-        
-        Generation of fingerprints of a document is a three stage process;
+## Super simple to use
+Fingerprint is very simple to use.
+```python
+f = Fingerprint(kgram_len=4, window_len=5, base=10, modulo=1000)
+print f.generate(str="adorunrunrunadorunrun")
+print f.generate(fpath="/Users/test/docs/CHANGES.txt")
+```
 
-        - (1st phase) generates the k-grams from the standard string 
-        - (2nd phase) generates the hash values for each k-gram using rolling hash function 
-        - (3rd phase) generates the fingerprints from the hash values using winnowing
-
-    * **How can i install it on my machine?** 
-    
-        You can install it in basically two ways;
-
-        - using source
-            1. git clone git@github.com:kailashbuki/fingerprint.git
-            2. cd fingerprint
-            3. sudo python setup.py install
-    
-        - using pip
-            1. sudo pip install fingerprint
-    
-    * **Hmm! ... How can i use it?**
-    
-        It's plain simple. Here's an example for you;
-
-::
-
-                from fingerprint.fingerprintgenerator import file_content_refiner, FingerprintGenerator
-              
-                # You could get the standard string from a document as;
-                s = file_content_refiner("path/to/file")
-                # OR you could directly pass the standard string if you have
-                s = "some sample string"
-                
-                fpg = FingerprintGenerator(input_string=s)
-                fpg.generate_fingerprints()
-                print fpg.fingerprints
-    
-    >>Feel free to contact at kailash<DOT>buki<AT>gmail<DOT>com (kailash.buki@gmail.com)<<
+## Install
+```sh
+pip install fingerprint
+```
 

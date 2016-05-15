@@ -4,4 +4,4 @@ LICENSE.txt
 README
 setup.py
 fingerprint/__init__.py
-fingerprint/fingerprintgenerator.py
+fingerprint/fingerprint.py
