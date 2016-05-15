@@ -10,6 +10,13 @@ f = Fingerprint(kgram_len=4, window_len=5, base=10, modulo=1000)
 print f.generate(str="adorunrunrunadorunrun")
 print f.generate(fpath="/Users/test/docs/CHANGES.txt")
 ```
+The default values for the parameters are
+```python
+kgram_len = 50
+window_len = 100
+base = 101
+modulo = sys.maxint
+```
 
 ## Install
 ```sh
