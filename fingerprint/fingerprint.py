@@ -31,7 +31,7 @@ class Fingerprint(object):
         window_len (Optional[len]): length of the windows when computing fingerprints. Defaults to 100.
         kgrams (List(str)): k-grams extracted from the text
         hashes (List(int)): hash values of the k-grams
-        fingerprints (List(tuple(int))): selected representative hash values along with their positions in the sanitized string.
+        fingerprints (List(tuple(int))): selected representative hash values along with their positions.
     """
 
     def __init__(self, kgram_len=None, base=None, modulo=None, window_len=None):
