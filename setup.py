@@ -11,7 +11,6 @@ setup(
     description='Document fingerprint generator',
     long_description=open('README.md').read(),
     packages=['fingerprint'],
-    zip_safe=False,
     platforms='any',
     classifiers=[
         'Development Status :: 4 - Beta',
