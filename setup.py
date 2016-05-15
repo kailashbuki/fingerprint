@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
     name='fingerprint',
-    version='0.1.1',
+    version='0.1.2',
     url='http://github.com/kailashbuki/fingerprint',
     license='LICENSE.txt',
     author='Kailash Budhathoki',
