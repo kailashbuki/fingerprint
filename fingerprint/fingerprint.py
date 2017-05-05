@@ -135,7 +135,7 @@ class Fingerprint(object):
     def load_file(self, fpath):
         with open(fpath, 'r') as fp:
             data = fp.read()
-        data = data.decode('utf-8')
+        data = data.encode().decode('utf-8')
         return data
 
 
