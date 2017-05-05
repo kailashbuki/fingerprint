@@ -37,11 +37,11 @@ class Fingerprint(object):
     def __init__(self, kgram_len=None, base=None, modulo=None, window_len=None):
         self.kgram_len = kgram_len or 50
         self.base = base or 101
-        self.modulo = modulo or sys.maxsize
+        self.modulo = modulo or sys.maxint
         self.window_len = window_len or 100
 
     def get_min_with_pos(self, sequence):
-        min_val = sys.maxsize
+        min_val = sys.maxint
         min_pos = 0
         for pos, val in enumerate(sequence):
             if val <= min_val:
@@ -71,7 +71,7 @@ class Fingerprint(object):
 
     def generate_kgrams(self):
         self.kgrams = [self.str[i:i + self.kgram_len]
-                       for i in range(len(self.str) - self.kgram_len + 1)]
+                       for i in xrange(len(self.str) - self.kgram_len + 1)]
 
     def hash_kgrams(self):
         prev_kgram = self.kgrams[0]
@@ -86,7 +86,7 @@ class Fingerprint(object):
 
     def generate_fingerprints(self):
         windows = [self.hashes[i:i + self.window_len]
-                   for i in range(len(self.hashes) - self.window_len + 1)]
+                   for i in xrange(len(self.hashes) - self.window_len + 1)]
 
         cur_min_hash, cur_min_pos = self.get_min_with_pos(windows[0])
         self.fingerprints.append((cur_min_hash, cur_min_pos))
@@ -141,5 +141,5 @@ class Fingerprint(object):
 
 if __name__ == "__main__":
     f = Fingerprint(kgram_len=4, window_len=5, base=10, modulo=1000)
-    print(f.generate(str="adorunrunrunadorunrun"))
-    print(f.generate(fpath="../CHANGES.txt"))
+    print f.generate(str="adorunrunrunadorunrun")
+    print f.generate(fpath="../CHANGES.txt")
