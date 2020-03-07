@@ -1,3 +1,3 @@
-#!/usr/bin/env python
+from . import fingerprint
 
-from .fingerprint import *
+__all__ = ['fingerprint']

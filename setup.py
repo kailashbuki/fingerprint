@@ -1,17 +1,25 @@
-# set up details
-from distutils.core import setup
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from setuptools import find_packages, setup
+
+
+with open('README.md', 'r') as fp:
+    README = fp.read()
+
 
 setup(
     name='fingerprint',
-    version='0.1.2',
-    url='http://github.com/kailashbuki/fingerprint',
-    license='LICENSE.txt',
+    version='0.1.3',
+    description='Document fingerprint generator',
+    long_description=README,
+    long_description_content_type='text/markdown',
     author='Kailash Budhathoki',
     author_email='kailash.buki@gmail.com',
-    description='Document fingerprint generator',
-    long_description=open('README.md').read(),
-    packages=['fingerprint'],
+    url='http://github.com/kailashbuki/fingerprint',
+    license='MIT License',
+    packages=find_packages(),
     platforms='any',
+    python_requires='>=3.0',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
