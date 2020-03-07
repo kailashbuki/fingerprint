@@ -9,7 +9,7 @@ with open('README.md', 'r') as fp:
 
 setup(
     name='fingerprint',
-    version='0.1.4',
+    version='0.1.5',
     description='Document fingerprint generator',
     long_description=README,
     long_description_content_type='text/markdown',
