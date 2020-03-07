@@ -16,8 +16,8 @@ Fingerprint officially supports Python >= 3.0.
 How to use fingerprint?
 -----------------------
 ```pycon
->>> from fingerprint import Fingerprint
->>> fprint = Fingerprint(kgram_len=4, window_len=5, base=10, modulo=1000)
+>>> import fingerprint
+>>> fprint = fingerprint.Fingerprint(kgram_len=4, window_len=5, base=10, modulo=1000)
 >>> fprint.generate(str="adorunrunrunadorunrun")
 >>> fprint.generate(fpath="../CHANGES.txt")
 ```

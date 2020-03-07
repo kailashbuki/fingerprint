@@ -1,3 +1,3 @@
-from . import fingerprint
+from .fingerprint import Fingerprint, FingerprintException
 
-__all__ = ['fingerprint']
+__all__ = ['Fingerprint', 'FingerprintException']
