@@ -137,9 +137,3 @@ class Fingerprint(object):
             data = fp.read()
         data = data.encode().decode('utf-8')
         return data
-
-
-if __name__ == "__main__":
-    f = Fingerprint(kgram_len=4, window_len=5, base=10, modulo=1000)
-    print(f.generate(str="adorunrunrunadorunrun"))
-    print(f.generate(fpath="../CHANGES.txt"))
