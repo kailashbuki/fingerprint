@@ -115,12 +115,8 @@ class Fingerprint(object):
                 "Length of the string is smaller than the length of the window.")
 
     def sanitize(self, str):
-        sanitized = ""
-        exclude = string.punctuation
-        for c in str:
-            if c not in exclude and c not in ('\n', '\r', ' '):
-                sanitized += c
-        return sanitized
+        exclude = set(string.punctuation + '\n\r ') # or rather + string.whitespace
+        return ''.join(c for c in str if c not in exclude)
 
     def generate(self, str=None, fpath=None):
         """generates fingerprints of the input. Either provide `str` to compute fingerprint directly from your string or `fpath` to compute fingerprint from the text of the file. Make sure to have your text decoded in `utf-8` format if you pass the input string.
