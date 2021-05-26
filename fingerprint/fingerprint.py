@@ -36,9 +36,18 @@ class Fingerprint(object):
 
     def __init__(self, kgram_len=None, base=None, modulo=None, window_len=None):
         self.kgram_len = kgram_len or 50
-        self.base = base or 101
         self.modulo = modulo or sys.maxsize
+        self.base = base or 101
         self.window_len = window_len or 100
+    
+    @property
+    def base(self):
+        return self.__base
+
+    @base.setter
+    def base(self, value):
+        self.__base = value
+        self.__most_left = pow(self.base, self.kgram_len-1, self.modulo)
 
     def get_min_with_pos(self, sequence):
         min_val = sys.maxsize
@@ -51,15 +60,17 @@ class Fingerprint(object):
 
     def normal_hash(self, kgram):
         hash = 0
-        for i, c in enumerate(kgram):
-            hash += guid(c) * self.base ** (self.kgram_len - 1 - i)
+        for c in kgram:
+            if hash != 0:
+                hash = (hash * self.base) % self.modulo
+            hash += guid(c)
         hash = hash % self.modulo
         return hash
 
     def rolling_hash(self, old_hash, del_char, new_char):
         # more powerful version of rolling hash
-        hash = (old_hash - guid(del_char) * self.base **
-                 (self.kgram_len-1)) * self.base + guid(new_char)
+        hash = ((old_hash - guid(del_char) * self.__most_left)
+                 * self.base + guid(new_char))
         hash = hash % self.modulo
         return hash
 
