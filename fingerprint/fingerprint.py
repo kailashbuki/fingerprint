@@ -75,34 +75,34 @@ class Fingerprint(object):
         return hash
 
     def prepare_storage(self):
-        self.kgrams = []
         self.hashes = []
         self.fingerprints = []
         self.str = ""
 
     def generate_kgrams(self):
-        self.kgrams = [self.str[i:i + self.kgram_len]
-                       for i in range(len(self.str) - self.kgram_len + 1)]
+        for i in range(len(self.str) - self.kgram_len + 1):
+            yield self.str[i:i + self.kgram_len]
 
     def hash_kgrams(self):
-        prev_kgram = self.kgrams[0]
+        kgram_iter = self.generate_kgrams()
+        prev_kgram = next(kgram_iter)
         prev_hash = self.normal_hash(prev_kgram)
         self.hashes.append(prev_hash)
 
-        for cur_kgram in self.kgrams[1:]:
+        for cur_kgram in kgram_iter:
             prev_hash = self.rolling_hash(
                 prev_hash, prev_kgram[0], cur_kgram[-1])
             self.hashes.append(prev_hash)
             prev_kgram = cur_kgram
 
     def generate_fingerprints(self):
-        windows = [self.hashes[i:i + self.window_len]
-                   for i in range(len(self.hashes) - self.window_len + 1)]
+        windows = (self.hashes[i:i + self.window_len]
+                   for i in range(len(self.hashes) - self.window_len + 1))
 
-        cur_min_hash, cur_min_pos = self.get_min_with_pos(windows[0])
+        cur_min_hash, cur_min_pos = self.get_min_with_pos(next(windows))
         self.fingerprints.append((cur_min_hash, cur_min_pos))
 
-        for i, window in enumerate(windows[1:]):
+        for i, window in enumerate(windows):
             min_hash, min_pos = self.get_min_with_pos(window)
             min_pos += i + 1
             if min_hash != cur_min_hash or min_hash == cur_min_hash and min_pos > cur_min_pos:
@@ -138,7 +138,6 @@ class Fingerprint(object):
         self.prepare_storage()
         self.str = self.load_file(fpath) if fpath else self.sanitize(str)
         self.validate_config()
-        self.generate_kgrams()
         self.hash_kgrams()
         self.generate_fingerprints()
         return self.fingerprints
