@@ -58,8 +58,8 @@ class Fingerprint(object):
 
     def rolling_hash(self, old_hash, del_char, new_char):
         # more powerful version of rolling hash
-        hash = ((old_hash - guid(del_char) * self.base **
-                 self.kgram_len) + guid(new_char)) * self.base
+        hash = (old_hash - guid(del_char) * self.base **
+                 (self.kgram_len-1)) * self.base + guid(new_char)
         hash = hash % self.modulo
         return hash
 
